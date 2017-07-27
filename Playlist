@@ -1,0 +1,68 @@
+// constructor that creates a library
+function Library(creator) {
+  this.creator = creator,
+  this.playlists = []
+}
+Library.prototype.addPlaylist = function(playlist){
+  this.playlists.push(playlist)
+  console.log("Added, current tracklist: ", this.playlists)
+}
+
+// constructor that creates a playlist
+function Playlist() {
+  this.tracks = {},
+  this.overallRating = function() {
+    let total = 0
+    for(track in this.tracks) {
+      total +=  this.tracks[track].rating
+    }
+    let numTracks = Object.keys(this.tracks).length
+    let avg = total / numTracks
+    console.log("num tracks", numTracks)
+    console.log("average rating is..", avg, " stars")
+    return avg
+  },
+  this.totalDuration = function() {
+    let total = 0
+    for(track in this.tracks) {
+      total +=  this.tracks[track].length
+    }
+    console.log("total duration is..", total, " minutes")
+    return total
+  }
+}
+Playlist.prototype.addTrack = function(newTrack){
+  this.tracks[newTrack.title] = newTrack
+  console.log("Added, current tracklist: ", this.tracks)
+}
+
+//constructor that creates a track
+function Track(title, artist, rating, length)  {
+  this.title  =  title,
+  this.artist = artist,
+  this.rating = rating,
+  this.length = length
+}
+
+
+///////////////////////// Test Code /////////////////////////
+
+// let niksLibrary = new Library("nik")
+// let rock = new Playlist()
+// // let smooth_jazz = new Playlist()
+// // let stairway = new Track("stairway to heaven", "led zeppelin", 5, 10)
+// // let bd = new Track("black dog", "led zeppelin", 3, 5)
+// // rock.addTrack(stairway)
+// // rock.addTrack(bd)
+// // console.log(rock.tracks["black dog"])
+// niksLibrary.addPlaylist(rock)
+// // niksLibrary.addPlaylist(smooth_jazz)
+// // rock.totalDuration()
+// // rock.overallRating()
+
+
+
+
+
+
+
